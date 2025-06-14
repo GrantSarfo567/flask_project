@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algerian Fire Weather Index Predictor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f4f7;
+            padding-top: 40px;
+        }
+        .container {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container bg-white p-5 rounded shadow">
+        <h2 class="mb-4 text-center text-primary">FWI Prediction - Algerian Forest Fires</h2>
+        <form method="POST" action="/predictdata">
+            <div class="mb-3">
+                <label class="form-label">Temperature (°C)</label>
+                <input type="number" step="any" name="Temperature" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">RH (Relative Humidity %)</label>
+                <input type="number" step="any" name="RH" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ws (Wind Speed km/h)</label>
+                <input type="number" step="any" name="Ws" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rain (mm)</label>
+                <input type="number" step="any" name="Rain" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">FFMC</label>
+                <input type="number" step="any" name="FFMC" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">DMC</label>
+                <input type="number" step="any" name="DMC" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">DC</label>
+                <input type="number" step="any" name="DC" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">ISI</label>
+                <input type="number" step="any" name="ISI" class="form-control" required>
+            </div>
+           
+            <button type="submit" class="btn btn-primary w-100">Predict FWI</button>
+        </form>
+
+        {% if prediction %}
+            <div class="alert alert-success mt-4 text-center">
+                <strong>Predicted FWI:</strong> {{ prediction }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
